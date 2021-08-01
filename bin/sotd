@@ -23,7 +23,7 @@ function select_from {
    else
       item="$(fzf < "$1")"  # this line is where the magic happens
    fi
-   markdown="- **$2:**"
+   markdown="* **$2:**"
    # user choice of 'none' results in nothing being returned
    if [[ "${item}" != "none" ]]; then
       echo "${markdown} ${item}"
