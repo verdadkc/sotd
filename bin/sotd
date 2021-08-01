@@ -35,6 +35,8 @@ function json(){
   printf "%s\n" "{\
 \"razor\":\"${razor}\",\
 \"blade\":\"${blade}\",\
+\"razor2\":\"${razor2}\",\
+\"blade2\":\"${blade2}\",\
 \"lather\":\"${lather}\",\
 \"brush\":\"${brush}\",\
 \"post\":\"${post}\",\
@@ -44,7 +46,7 @@ function json(){
 }
 
 # The author likes Terrorade, but caters to less enlightened tastes
-use_terrorade="no"     # set it to yes to include terrorade
+use_terrorade="yes"     # set it to yes to include terrorade
 
 ##-- The utility functions are all defined, let's use them.
 
@@ -58,16 +60,15 @@ sotd="archive/sotd.${when}"
 touch "${sotd}"  # In case we need a new file for a new day.
 echo "" > "${sotd}" # If one already exists, wipe it. Allows for easy retry when desired.
 
-# Let's populate that sucker.
-push '---'
-push ' '
 # Grab user choices
-razor=$(select_from  "./razors"  "Razor")
-blade=$(select_from  "./blades"  "Blade")
-lather=$(select_from "./lathers" "Lather")
-brush=$(select_from  "./brushes" "Brush")
-post=$(select_from   "./posts"   "Post")
-frag=$(select_from   "./frags"   "Frag")
+razor=$(select_from  "./razors"   "Razor")
+blade=$(select_from  "./blades"   "Blade")
+razor2=$(select_from  "./razors"  "Razor")
+blade2=$(select_from  "./blades"  "Blade")
+lather=$(select_from "./lathers"  "Lather")
+brush=$(select_from  "./brushes"  "Brush")
+post=$(select_from   "./posts"    "Post Shave")
+frag=$(select_from   "./frags"    "Fragrance")
 if [[ ${use_terrorade} == "yes" ]]; then
    terrorade=$(select_from   "./terrorade"   "Terrorade")
 else
@@ -75,7 +76,7 @@ else
 fi
 
 # Write user choices to the sotd file.
-for item in "${razor}" "${blade}" "${lather}" "${brush}" "${post}" "${terrorade}" "${frag}"
+for item in "${razor}" "${blade}" "${razor2}"  "${blade2}" "${lather}" "${brush}" "${post}" "${terrorade}" "${frag}"
 do
    if [[ "${item}" != "" ]]; then
       push "${item}"
