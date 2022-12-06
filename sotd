@@ -8,7 +8,7 @@
 ## See https://github.com/junegunn/fzf#installation for installation details.
 ## You need fzf in your life. This will not work without fzf, just saying.
 
-## Program was developed and tested on macos Catalina. Should work on linux as is.
+## Program was developed and tested on macos. Likely to work on linux as is, but have not tried it.
 ## Unlikely to work on Windows without changes. Maybe on Windows Linux Subsytem,
 ## but author does not have a Windows machine. You up for porting it?
 

@@ -17,12 +17,12 @@ Requirements:
 
 Instructions:
 1. Clone or download this repository.
-1. cd into the top level directory
-1. run 'sotd'
-1. You will be presented with a choice of razors. Start typing and watch the how list narrows. Backspace, try something else. Experiment. Once you grok the fzf workflow you'll want it everywhere.
-1. Hit enter to select. Rinse, lather, repeat.
+2. cd into the top level directory
+3. run 'sotd'
+4. You will be presented with a choice of razors. Start typing and watch the how list narrows. Backspace, try something else. Experiment. Once you grok the fzf workflow you'll want it everywhere.
+5. Hit enter to select. Rinse, lather, repeat.
 
-You'll certainly want to add/delete products to the razors/blades/brushes/posts/frags files.  Add one item per line. These files do not need to be sorted.
+You'll certainly want to add/delete products to the razors/blades/brushes/posts/frags files, located in the products directory.  Add one item per line. These files do not need to be sorted.
 
 The sotd script is generously commented, and short. Give it a read. Even if you don't know much bash you'll likely get a better feel for how it works.
 
