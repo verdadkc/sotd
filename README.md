@@ -29,4 +29,4 @@ The sotd script is generously commented, and short. Give it a read. Even if you 
 
 There is an archive directory where the daily sotd files are automatically stored.
 
-Tested on MacOS Catalina. Should work on linux, assuming fzf is installed and in the command path. Might work on Windows WSL, but the author does not have a Windows machine on which to find out.
+Tested on MacOS. Should work on linux, assuming fzf is installed and in the command path. Might work on Windows WSL, but the author does not have a Windows machine on which to find out.
