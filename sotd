@@ -9,7 +9,7 @@
 ## You need fzf in your life. This will not work without fzf, just saying.
 
 ## Program was developed and tested on macos. Likely to work on linux as is, but have not tried it.
-## Unlikely to work on Windows without changes. Maybe on Windows Linux Subsytem,
+## Unlikely to work on Windows without changes. Maybe on Windows Linux Subsystem,
 ## but author does not have a Windows machine. You up for porting it?
 
 ##-- Define utility functions.
@@ -17,12 +17,12 @@ function push {  # append line to the sotd file
     printf "%s\n" "$1" >> "${sotd}"
 }
 
-function select_from {
-   item="$(fzf < "$1")"  # This is where the magic happens
-   markdown="* **$2:**"
+function select_from { # Get the user's product choices
+   choice="$(fzf < "$1")"  # This is where the magic happens
+   markdown="$2"
    # User choice of 'none' results in nothing being returned
-   if [[ "${item}" != "none" ]]; then
-      echo "${markdown} ${item}"
+   if [[ "${choice}" != "none" ]]; then
+      echo "${markdown} ${choice}"
    fi
 }
 
@@ -46,23 +46,24 @@ function json(){
 # Get the current date.
 when="$(date +%Y-%m-%d)"
 
-# Create the name of the sotd file.
+# Create the name of the today's sotd file.
 # Notice the file path is relative to the install dir.
 sotd="archive/sotd.${when}"
 
 # Create the empty sotd file.
 touch "${sotd}"
-# If file already exists due to mulitple runs on same day, wipe it. Allows for easily re-running script if desired.
+# If file already exists due to mulitple runs on same day, wipe it. Allows for easily re-running script,
+# say in case of error.
 echo "" > "${sotd}"
 
-# Grab USER CHOICES
-razor=$(select_from  "./products/razors"   "Razor")
-blade=$(select_from  "./products/blades"   "Blade")
-lather=$(select_from "./products/lathers"  "Lather")
-brush=$(select_from  "./products/brushes"  "Brush")
-post=$(select_from   "./products/posts"    "Post Shave")
-# Uncomment line below if you want to include a fragrance choice
-# frag=$(select_from   "./frags"    "Fragrance")
+# Grab the USER CHOICES
+razor=$(select_from  "./products/razors"   "* **Razor:**")
+blade=$(select_from  "./products/blades"   "* **Blade:**")
+lather=$(select_from "./products/lathers"  "* **Lather:**")
+brush=$(select_from  "./products/brushes"  "* **Brush:**")
+post=$(select_from   "./products/posts"    "* **Post Shave:**")
+# Uncomment the line below if you want to include a fragrance choice
+frag=$(select_from   "./products/frags"    "* **Fragrance:**")
 
 
 # Write the user choices to the sotd file.
