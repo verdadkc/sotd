@@ -35,18 +35,12 @@ function json(){
   printf "%s\n" "{\
 \"razor\":\"${razor}\",\
 \"blade\":\"${blade}\",\
-\"razor2\":\"${razor2}\",\
-\"blade2\":\"${blade2}\",\
 \"lather\":\"${lather}\",\
 \"brush\":\"${brush}\",\
 \"post\":\"${post}\",\
-\"terrorade\":\"${terrorade}\",\
 \"frag\":\"${frag}\",\
 \"date\":\"${when}\"}"
 }
-
-# The author likes Terrorade, but caters to less enlightened tastes
-use_terrorade="yes"     # set it to yes to include terrorade
 
 ##-- The utility functions are all defined, let's use them.
 
@@ -63,30 +57,23 @@ echo "" > "${sotd}" # If one already exists, wipe it. Allows for easy retry when
 # Grab user choices
 razor=$(select_from  "./razors"   "Razor")
 blade=$(select_from  "./blades"   "Blade")
-razor2=$(select_from  "./razors"  "Razor")
-blade2=$(select_from  "./blades"  "Blade")
 lather=$(select_from "./lathers"  "Lather")
 brush=$(select_from  "./brushes"  "Brush")
 post=$(select_from   "./posts"    "Post Shave")
-frag=$(select_from   "./frags"    "Fragrance")
-if [[ ${use_terrorade} == "yes" ]]; then
-   terrorade=$(select_from   "./terrorade"   "Terrorade")
-else
-   terrorade=""
-fi
+
+# uncomment line below if you want to include a fragrance
+#frag=$(select_from   "./frags"    "Fragrance")
 
 # Write user choices to the sotd file.
-for item in "${razor}" "${blade}" "${razor2}"  "${blade2}" "${lather}" "${brush}" "${post}" "${terrorade}" "${frag}"
+for item in "${razor}" "${blade}" "${lather}" "${brush}" "${post}" "${frag}"
 do
    if [[ "${item}" != "" ]]; then
       push "${item}"
    fi
 done
-push ' '
-push '---'
 
 # To also archive the data as json, uncomment line below.
-json > "${sotd}.json"
+# json > "${sotd}.json"
 
 # Copy the sotd to the clipboard for enhanced pasting convenience.
 # This only works on MacOS. Uncomment if so desired.
