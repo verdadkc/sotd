@@ -9,7 +9,7 @@ Interactively generate sotd boilerplate, for example:
 * **post:** Abbate Y La Mantia - Laureato AS
 * **frag:** Penhaligon - Blenheim Boquet EdT
 
-The main feature here is the fast and easy workflow provided by use of the fabulous [fzf utility](https://github.com/junegunn/fzf).
+The main feature here is the fast and easy workflow provided by use of the fabulous [fzf](https://github.com/junegunn/fzf) utility.
 
 Requirements:
 * This is a console application, so you'll need a system with a bash shell.
